@@ -96,6 +96,8 @@ def _get_type_name_arraydecl(arraydecl: ArrayDecl) -> str:
         name = _get_type_name_ptrdecl(arraydecl.type)
     elif isinstance(arraydecl.type, TypeDecl):
         name = _get_type_name_typedecl(arraydecl.type)
+    elif isinstance(arraydecl.type, ArrayDecl):
+        name = _get_type_name_arraydecl(arraydecl.type)
     else:
         raise ValueError(f"Unknown type {type(arraydecl.type)}")
     return f"{name}*"
